@@ -1,6 +1,6 @@
-import { getTokenId, getTokenSecret } from "../state.js";
+import { getTokenId, getTokenSecret } from '../state.js'
 
-export const API_PREFIX = "http://localhost:8080/api"
+export const API_PREFIX = 'http://localhost:8080/api'
 
 export async function makeApiCall(url) {
   const token_id = getTokenId()
@@ -12,7 +12,7 @@ export async function makeApiCall(url) {
       'Authorization': `Token ${token_id}:${token_secret}`,
       'Content-Type': 'application/json',
     },
-  });
+  })
   
-  return response;
+  return response
 }

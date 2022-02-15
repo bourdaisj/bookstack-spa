@@ -1,10 +1,10 @@
-import { list } from "../../api/book_api"
+import { list } from '../../api/book_api'
 
-let books = null;
-let total_books = 0;
+let books = null
+let total_books = 0
 
 export async function onPageReady() {
-  console.log("books page loaded")
+  console.log('books page loaded')
   const response = await list()
   books = response.data
   total_books = response.total
