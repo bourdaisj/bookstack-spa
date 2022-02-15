@@ -2,9 +2,9 @@ const state = {
   token_id: localStorage.getItem('token_id'),
   token_secret: localStorage.getItem('token_secret'),
   get isAuth() {
-    return Boolean(this.token_id && this.token_secret);
+    return Boolean(this.token_id && this.token_secret)
   }
-};
+}
 
 export function SET_TOKEN_ID(token_id) {
   state.token_id = token_id
