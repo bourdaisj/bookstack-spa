@@ -1,3 +1,9 @@
+function emitEvent() {
+  this.dispatchEvent(new CustomEvent('show-book', { bubbles: true, detail: {
+    book_id: this.book.id
+  }}))
+}
+
 export class BookCard extends HTMLElement {
   constructor() {
     super()
@@ -17,5 +23,7 @@ export class BookCard extends HTMLElement {
     this.book_name_span.innerHTML = `${this.book.name}&nbsp;`
     this.book_description_span.innerHTML = `${this.book.description}&nbsp;`
     this.book_created_at_span.innerHTML = `${created_at_str}&nbsp;`
+
+    this.addEventListener('click', emitEvent.bind(this))
   }
 }
