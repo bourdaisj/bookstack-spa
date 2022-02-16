@@ -17,6 +17,16 @@ export function SET_TOKEN_SECRET(token_secret) {
   localStorage.setItem('token_secret', token_secret)
 }
 
+export function REMOVE_TOKEN_ID() {
+  state.token_id = undefined
+  localStorage.removeItem('token_id')
+}
+
+export function REMOVE_TOKEN_SECRET() {
+  state.token_secret = undefined
+  localStorage.removeItem('token_secret')
+}
+
 export function isAuth() {
   return state.isAuth
 }

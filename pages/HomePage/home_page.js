@@ -8,7 +8,7 @@ export function onPageReady() {
   books_btn = document.getElementById('books-btn')
   books_btn.addEventListener('click', () => navigateTo('books'))
 
-  books_btn = document.getElementById('login-btn')
-  books_btn.addEventListener('click', () => navigateTo('login'))
+  login_btn = document.getElementById('login-btn')
+  login_btn.addEventListener('click', () => navigateTo('login'))
 }
   
