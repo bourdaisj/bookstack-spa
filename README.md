@@ -7,3 +7,7 @@ This is an experimentation for:
 - Web components
 - Web crypto api
 - ...
+
+## todo
+- add typescript tooling
+- styles (maybe setup postcss)
