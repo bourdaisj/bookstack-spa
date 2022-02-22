@@ -9,5 +9,6 @@ This is an experimentation for:
 - ...
 
 ## todo
-- add typescript tooling
-- styles (maybe setup postcss)
+- cleanup
+- build design system
+- styles (maybe postcss setup)

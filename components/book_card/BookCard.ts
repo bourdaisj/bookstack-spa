@@ -1,4 +1,4 @@
-import type { Book } from '../../types'
+import { Book } from '../../entities/Book'
 
 function emitEvent() {
   this.dispatchEvent(new CustomEvent('show-book', { bubbles: true, detail: {

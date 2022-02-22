@@ -1,3 +1,4 @@
+import { Book } from '../entities/Book'
 import { makeApiCall } from './core'
 
 const endpoints = {
@@ -5,12 +6,19 @@ const endpoints = {
   read: (book_id) => `books/${book_id}`
 }
 
-export async function list() {
+export async function list(): Promise<{ total : number, data: Array<Book> }> {
   const response = await makeApiCall(endpoints.list)
-  return response.json()
+  const json = await response.json()
+  const books = json.data.map((book_resource) => new Book(book_resource))
+
+  return {
+    data: books,
+    total: json.total
+  }
 }
 
 export async function read(book_id: number) {
   const response = await makeApiCall(endpoints.read(book_id))
-  return response.json()
+  const payload = await response.json()
+  return new Book(payload)
 }
