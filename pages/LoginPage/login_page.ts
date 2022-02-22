@@ -1,5 +1,5 @@
-import { SET_TOKEN_ID, SET_TOKEN_SECRET } from '../../state.js'
-import { navigateTo } from '../../router.js'
+import { SET_TOKEN_ID, SET_TOKEN_SECRET } from '../../state'
+import { navigateTo } from '../../router'
 
 let submit_btn = null
 let token_id_input = null

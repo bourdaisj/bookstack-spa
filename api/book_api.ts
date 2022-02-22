@@ -10,7 +10,7 @@ export async function list() {
   return response.json()
 }
 
-export async function read(book_id) {
+export async function read(book_id: number) {
   const response = await makeApiCall(endpoints.read(book_id))
   return response.json()
 }

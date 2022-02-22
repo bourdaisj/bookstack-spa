@@ -1,3 +1,5 @@
+import type { Book } from '../../types'
+
 function emitEvent() {
   this.dispatchEvent(new CustomEvent('show-book', { bubbles: true, detail: {
     book_id: this.book.id
@@ -5,9 +7,15 @@ function emitEvent() {
 }
 
 export class BookCard extends HTMLElement {
+  shadow_root: ShadowRoot
+  book_name_span: HTMLSpanElement
+  book_description_span: HTMLSpanElement
+  book_created_at_span: HTMLSpanElement
+  book: Book
+
   constructor() {
     super()
-    const template_content = document.getElementById('book-card').content
+    const template_content = (document.getElementById('book-card') as HTMLTemplateElement).content
     this.shadow_root = this.attachShadow({ mode: 'open' })
     this.shadow_root.appendChild(template_content.cloneNode(true))
 

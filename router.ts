@@ -47,10 +47,10 @@ export async function navigateTo(route_name) {
   const capitalized_name = capitalize(matching_route.name)
 
   const full_path = `${prefix}/${capitalized_name}Page/${matching_route.name}_page.html?raw`
-  const full_logic_path = `${prefix}/${capitalized_name}Page/${matching_route.name}_page.js`
+  const full_logic_path = `${prefix}/${capitalized_name}Page/${matching_route.name}_page.ts`
 
-  let template = await import(full_path)
-  let logic = await import(full_logic_path)
+  const template = await import(full_path)
+  const logic = await import(full_logic_path)
 
   app.innerHTML = template.default
   logic.onPageReady()
