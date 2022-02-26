@@ -9,6 +9,6 @@ This is an experimentation for:
 - ...
 
 ## todo
-- cleanup
 - build design system
 - styles (maybe postcss setup)
+- accessibility ?

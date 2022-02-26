@@ -1,4 +1,4 @@
-import './style.css'
+import './index.css'
 import { routes } from './router'
 import { navigateTo } from './router'
 import { BookCard } from './components/book_card/BookCard'
