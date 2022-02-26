@@ -6,7 +6,6 @@ import BookCardTemplate from './components/book_card/book_card.html?raw'
 import { BookView } from './components/book_view/BookView'
 import BookViewTemplate from './components/book_view/book_view.html?raw'
 import PageCardTemplate from './components/page_card/page_card.html?raw'
-import { REMOVE_TOKEN_ID, REMOVE_TOKEN_SECRET } from './state'
 import { PageCard } from './components/page_card/PageCard'
 
 const templating = document.getElementById('templating')
@@ -29,10 +28,5 @@ customElements.define('book-view', BookView)
 customElements.define('page-card', PageCard)
 
 const current_route = routes.find(route => route.path === location.pathname)
-
-document.getElementById('clear-credentials-btn').addEventListener('click', () => {
-  REMOVE_TOKEN_ID()
-  REMOVE_TOKEN_SECRET()
-})
 
 navigateTo(current_route.name)

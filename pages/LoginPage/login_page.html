@@ -1,9 +1,23 @@
-<main>
-  <label for="token-id">Token ID:</label>
-  <input type="text" id="token-id-input" name="token-id" required minlength="32" maxlength="32" />
+<section id="login-section" class="flow">
+  <h1 class="uppercase fw-600 text-align-center">Enter Credentials</h1>
 
-  <label for="token-secret">Token Secret:</label>
-  <input type="password" id="token-secret-input" name="token-secret" required minlength="32">
+  <form class="grid" name="auth" id="auth-form">
+    <div class="text-field-wrapper">
+      <label for="api-url">API URL</label>
+      <!-- TODO: Validate URL -->
+      <input placeholder="https://yourdomain.bookstack.com" class="input-text-field" type="text" id="api-url-input" name="api-url" required />
+    </div>
 
-  <button id="submit-btn" type="button">Submit</button>
-</main>
+    <div class="text-field-wrapper">
+      <label for="token-id">Token ID</label>
+      <input placeholder="Enter a valid token id for you account" class="input-text-field" type="text" id="token-id-input" name="token-id" required minlength="32" maxlength="32" />
+    </div>
+    
+    <div class="text-field-wrapper">
+      <label for="token-secret">Token Secret</label>
+      <input placeholder="Enter a secret token matching your token id" class="input-text-field" type="password" id="token-secret-input" name="token-secret" required minlength="32">
+    </div>
+    
+    <button id="submit-btn" type="button" form="auth-form" class="btn btn-primary">Login</button>
+  </form>
+</section>

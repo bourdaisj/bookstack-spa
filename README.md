@@ -9,6 +9,7 @@ This is an experimentation for:
 - ...
 
 ## todo
-- build design system
-- styles (maybe postcss setup)
+- build design system => WIP
+- styles (maybe postcss setup) => WIP
 - accessibility ?
+- when the user click on 'go back' in the browser toolbar, the url changes but the page don't; make it happen
