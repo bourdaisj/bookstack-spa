@@ -8,7 +8,7 @@ function onLinkClicked(e: Event) {
   e.preventDefault()
   previous_link = current_link
   current_link = this
-  navigateTo(this.id.split('-')[0])
+  navigateTo({ route_name: this.id.split('-')[0] })
 }
 
 export function init(route) {
@@ -23,14 +23,26 @@ export function init(route) {
   document.getElementById('clear-credentials-btn').addEventListener('click', () => {
     REMOVE_TOKEN_ID()
     REMOVE_TOKEN_SECRET()
-    navigateTo('login')
+    navigateTo({ route_name: 'login' })
   })
 }
 
-export function onNavigationComplete() {    
+export function onNavigationComplete(to, from) {    
+  if (from) {
+    if (previous_link == undefined || previous_link.id.split('-')[0] !== from.name) {
+      previous_link = document.querySelector(`#${from.name}-page-link`)
+    }
+  }
+
   if (previous_link) {
     previous_link.classList.remove('active')
   }
 
-  current_link.classList.add('active')
+  if (current_link == undefined || current_link.id.split('-')[0] !== to.name) {
+    current_link = document.querySelector(`#${to.name}-page-link`)
+  }
+  
+  if (current_link) {
+    current_link.classList.add('active')
+  }
 }

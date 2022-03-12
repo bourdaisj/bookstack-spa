@@ -15,11 +15,11 @@ const current = {
   }
 }
 
-export async function navigateTo(route_name: string) {
+export async function navigateTo({ route_name, replace = false }: { route_name: string, replace?: boolean}) {
   const matching_route = routes.find(route => route.name === route_name)
 
   if ((!isAuth() && !matching_route.meta.guest)) {
-    navigateTo('login')
+    navigateTo({ route_name: 'login' })
     return
   }
   
@@ -49,9 +49,11 @@ export async function navigateTo(route_name: string) {
   document.querySelector('#layout-inner-slot').innerHTML = page_template.default
   page_logic.onPageReady()
 
-  window.history.pushState(matching_route, matching_route.title, matching_route.path)
+  const history_func = replace ? window.history.replaceState : window.history.pushState
 
+  history_func.call(window.history, matching_route, matching_route.title, matching_route.path)
+
+  current.layout.logic.onNavigationComplete(matching_route, current.route)
   current.route = matching_route
   current.layout.name = layout_name
-  current.layout.logic.onNavigationComplete()
 }

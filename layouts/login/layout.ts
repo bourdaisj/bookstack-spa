@@ -1,3 +1,7 @@
-export function onLayoutReady() {
+export function init() {
+  //
+}
+
+export function onNavigationComplete() {
   //
 }

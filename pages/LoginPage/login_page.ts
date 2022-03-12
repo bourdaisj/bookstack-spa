@@ -12,7 +12,7 @@ function onSubmit() {
   SET_TOKEN_ID(token_id)
   SET_TOKEN_SECRET(token_secret)
 
-  navigateTo('home')
+  navigateTo({ route_name: 'home' })
 }
 
 export function onPageReady() {

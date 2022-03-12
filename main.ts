@@ -29,4 +29,9 @@ customElements.define('page-card', PageCard)
 
 const current_route = routes.find(route => route.path === location.pathname)
 
-navigateTo(current_route.name)
+navigateTo({ route_name: current_route.name })
+
+window.addEventListener('popstate', (e) => {
+  const route = routes.find(route => route.path === location.pathname)
+  navigateTo({ route_name: route.name, replace: true })
+})
