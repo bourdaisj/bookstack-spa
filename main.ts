@@ -1,5 +1,5 @@
 import './index.css'
-import { routes } from './router'
+import routes from './router/routes'
 import { navigateTo } from './router'
 import { BookCard } from './components/book_card/BookCard'
 import BookCardTemplate from './components/book_card/book_card.html?raw'
