@@ -31,7 +31,7 @@ const current_route = routes.find(route => route.path === location.pathname)
 
 navigateTo({ route_name: current_route.name })
 
-window.addEventListener('popstate', (e) => {
+window.addEventListener('popstate', () => {
   const route = routes.find(route => route.path === location.pathname)
   navigateTo({ route_name: route.name, replace: true })
 })

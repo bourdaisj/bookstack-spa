@@ -6,8 +6,8 @@ This is an experimentation for:
 - Fetch API
 - Web components
 - Web crypto api
+- Accessibility
 - ...
 
 ## todo
-- accessibility ?
-- when the user click on 'go back' in the browser toolbar, the url changes but the page don't; make it happen
+- allow user to configure api url
