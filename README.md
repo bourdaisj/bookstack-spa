@@ -11,3 +11,5 @@ This is an experimentation for:
 
 ## todo
 - allow user to configure api url
+- create a separate stylesheet for global styles : global styling and helper classes ; this stylesheet will be linked
+in every web component template and in the index.html

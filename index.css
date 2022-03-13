@@ -122,6 +122,10 @@ select {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
@@ -265,6 +269,14 @@ select {
   padding: .25em;
 }
 
+.list {
+  list-style: none;
+}
+
+.list-item > h3 {
+  margin: 0;
+}
+
 /* ===================== */
 /* Page-specific styling */
 /* ===================== */
@@ -306,4 +318,12 @@ select {
 
 #login-layout > #layout-inner-slot {
   position: relative;
+}
+
+/* --------- */
+/* Book Page */
+/* --------- */
+#books-list-div > book-card {
+  margin: 1em;
+  width: 10em;
 }

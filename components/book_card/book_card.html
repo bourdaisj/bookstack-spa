@@ -1,7 +1,37 @@
+
 <template id="book-card">
-  <div class="book-card-wrapper">
-    <span class="book-name-span"></span>
-    <span class="book-description-span"></span>
-    <span class="book-created-at-span"></span>
-  </div>
+  <!-- This needs to be in every web component template in order to gain access to helpers classes
+  as well as enabling global styling -->
+  <link rel="stylesheet" href="index.css">
+
+  <article class="book-card-wrapper list-item">
+    <h4 class="book-name-span fw-600"></h4>
+    <div class="book-created-at-span fs-200 subtitle"></div>
+    <div class="book-description-span"></div>
+  </article>
+
+  <style>
+    .book-card-wrapper {
+      border: .1rem solid hsl( var(--clr-white));
+      padding: 1em;
+    }
+
+    .book-name-span {
+      margin-top: 0;
+    }
+
+    .book-created-at-span {
+      margin-bottom: .5em;
+    }
+
+    .subtitle {
+      font-style: italic;
+    }
+
+    .book-description-span {
+      text-overflow: ellipis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  </style>
 </template>

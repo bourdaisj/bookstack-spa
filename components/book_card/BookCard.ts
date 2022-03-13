@@ -28,9 +28,10 @@ export class BookCard extends HTMLElement {
     console.log('book card connected')
     const created_at_str = new Date(this.book.created_at).toLocaleDateString()
 
-    this.book_name_span.innerHTML = `${this.book.name}&nbsp;`
-    this.book_description_span.innerHTML = `${this.book.description}&nbsp;`
-    this.book_created_at_span.innerHTML = `${created_at_str}&nbsp;`
+    this.book_name_span.innerHTML = this.book.name
+    this.book_description_span.innerHTML = this.book.description
+    this.book_created_at_span.innerHTML = created_at_str
+    this.book_description_span.title = this.book.description
 
     this.addEventListener('click', emitEvent.bind(this))
   }
