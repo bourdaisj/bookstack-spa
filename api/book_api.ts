@@ -3,7 +3,8 @@ import { makeApiCall } from './core'
 
 const endpoints = {
   list: 'books',
-  read: (book_id) => `books/${book_id}`
+  read: (book_id: number) => `books/${book_id}`,
+  delete: (book_id: number) => `books/${book_id}`
 }
 
 export async function list(): Promise<{ total : number, data: Array<Book> }> {
@@ -21,4 +22,8 @@ export async function read(book_id: number) {
   const response = await makeApiCall(endpoints.read(book_id))
   const payload = await response.json()
   return new Book(payload)
+}
+
+export function destroy(book_id: number) {
+  return makeApiCall(endpoints.delete(book_id), 'DELETE')
 }
