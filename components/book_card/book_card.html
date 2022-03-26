@@ -3,6 +3,7 @@
   <!-- This needs to be in every web component template in order to gain access to helpers classes
   as well as enabling global styling -->
   <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <article class="book-card-wrapper list-item">
     <h4 class="book-name-span fw-600"></h4>
@@ -10,7 +11,9 @@
     <div class="book-description-span"></div>
 
     <div class="card-actions">
-      <button class="delete-book-button">delete</button>
+      <button class="delete-book-button btn-icon">
+        <span class="material-icons" style="color: hsl(var(--clr-danger));">delete</span>
+      </button>
     </div>
   </article>
 
