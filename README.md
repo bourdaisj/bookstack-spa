@@ -10,4 +10,6 @@ This is an experimentation for:
 - ...
 
 ## todo
--
+- snackbar, for showing feedback to users (for instance 'the book has been sucessfully deleted')
+- correct book pages access and display
+- test the provided API URL to check if the API is responding, if not, feedback the user and allow him to correct his input

@@ -13,6 +13,7 @@ export class BookCard extends HTMLElement {
   book_description_span: HTMLSpanElement
   book_created_at_span: HTMLSpanElement
   delete_book_button: HTMLButtonElement
+  show_book_button: HTMLButtonElement
   book: Book
 
   constructor() {
@@ -25,6 +26,7 @@ export class BookCard extends HTMLElement {
     this.book_description_span = this.shadow_root.querySelector('.book-description-span')
     this.book_created_at_span = this.shadow_root.querySelector('.book-created-at-span')
     this.delete_book_button = this.shadow_root.querySelector('.delete-book-button')
+    this.show_book_button = this.shadow_root.querySelector('.show-book-button')
   }
   
   connectedCallback() {
@@ -36,7 +38,7 @@ export class BookCard extends HTMLElement {
     this.book_created_at_span.innerHTML = created_at_str
     this.book_description_span.title = this.book.description
 
-    this.addEventListener('click', emitEvent.bind(this, { 
+    this.show_book_button.addEventListener('click', emitEvent.bind(this, { 
       event_name: 'show-book',
       payload: {
         book_id: this.book.id

@@ -1,23 +1,19 @@
-import { destroy, list, read } from '../../api/book_api'
-import { list as listPages } from '../../api/page_api'
+import { destroy, list } from '../../api/book_api'
 import { BookCard } from '../../components/book_card/BookCard'
-import { BookView } from '../../components/book_view/BookView'
 import { Book } from '../../entities/Book'
+import { navigateTo } from '../../router'
 import { removeById } from '../../utils/arr'
 
 let books: Book[] = null
 let total_books = 0
 
-let book_views_div = null
-
 async function showBook(e) {
-  const book = await read(e.detail.book_id)
-  const { data: pages } = await listPages(e.detail.book_id)
-
-  const book_view = document.createElement('book-view') as BookView
-  book_view.book = book
-  book_view.pages = pages
-  book_views_div.appendChild(book_view)
+  navigateTo({ 
+    route_name: 'book_show', 
+    params: {
+      book_id: e.detail.book_id
+    } 
+  })
 }
 
 async function deleteBook(e) {
@@ -40,7 +36,6 @@ export async function onPageReady() {
   total_books_number_span.innerText = String(total_books)
 
   const books_list_div = document.getElementById('books-list-div')
-  book_views_div = document.getElementById('book-views-div')
 
   for (const book of books) {
     const book_card = document.createElement('book-card') as BookCard

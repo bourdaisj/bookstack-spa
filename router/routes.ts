@@ -24,6 +24,14 @@ export default [
       guest: false
     } 
   },
+  {
+    path: ({ book_id }) =>  `/books/${book_id}`,
+    name: 'book_show',
+    title: 'Book',
+    meta: {
+      guest: false
+    }
+  },
   { 
     path: '/users', 
     name: 'users', 
