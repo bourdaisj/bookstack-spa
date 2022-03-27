@@ -1,0 +1,50 @@
+/* ===================== */
+/* Page-specific styling */
+/* ===================== */
+
+/* --------- */
+/* Home Page */
+/* --------- */
+#main-nav {
+  align-items: center;
+}
+
+.primary-navigation {
+  --gap: 2rem;
+  --underline-gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a {
+  text-decoration: none;
+}
+
+/* ---------- */
+/* Login Page */
+/* ---------- */
+#login-section {
+  width: 20em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#submit-btn {
+  width: 5em;
+  margin: auto;
+}
+
+#login-layout > #layout-inner-slot {
+  position: relative;
+}
+
+/* --------- */
+/* Book Page */
+/* --------- */
+#books-list-div > book-card {
+  margin: 1em;
+  width: 10em;
+}
