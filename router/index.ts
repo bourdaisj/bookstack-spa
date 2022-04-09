@@ -1,4 +1,4 @@
-import { capitalize, pascalCase } from '../utils/str'
+import { pascalCase } from '../utils/str'
 import { isAuth } from '../state'
 import routes from './routes'
 

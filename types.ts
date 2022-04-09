@@ -29,3 +29,5 @@ export interface BookApiResource {
   updated_by: { id: number, name: string }
   owned_by: { id: number, name: string }
 }
+
+export type ActionType = 'success' | 'danger' | 'info' | 'warning'

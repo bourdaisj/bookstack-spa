@@ -1,6 +1,8 @@
 import { navigateTo } from '../../router'
 import { REMOVE_TOKEN_ID, REMOVE_TOKEN_SECRET } from '../../state'
+import { ActionType } from '../../types'
 
+// file is parsed/executed twice so those gets resets to null...
 let previous_link = null
 let current_link = null
 
@@ -9,6 +11,10 @@ function onLinkClicked(e: Event) {
   previous_link = current_link
   current_link = this
   navigateTo({ route_name: this.id.split('-')[0] })
+}
+
+function hideSnackbar(snackbar) {
+  snackbar.classList.remove('show')
 }
 
 export function init(route) {
@@ -25,6 +31,9 @@ export function init(route) {
     REMOVE_TOKEN_SECRET()
     navigateTo({ route_name: 'login' })
   })
+
+  const snackbar = document.querySelector('#default-layout-snackbar')
+  document.querySelector('#close-snackbar-btn').addEventListener('click', hideSnackbar.bind(null, snackbar))
 }
 
 export function onNavigationComplete(to, from) {    
@@ -45,4 +54,16 @@ export function onNavigationComplete(to, from) {
   if (current_link) {
     current_link.classList.add('active')
   }
+}
+
+export function showSnackbar(content: string, type: ActionType) {
+  const snackbar = document.querySelector('#default-layout-snackbar')
+  const snackbar_text_content_span = document.querySelector('#snackbar-text-content')
+
+  snackbar_text_content_span.textContent = content
+
+  snackbar.classList.add(`background-${type}`)
+  snackbar.classList.add('show')
+
+  window.setTimeout(hideSnackbar.bind(null, snackbar), 6000)
 }

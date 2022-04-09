@@ -1,12 +1,6 @@
 import { Book } from '../../entities/Book'
 import { emitEvent } from '../../utils/events'
 
-// function emitEvent() {
-//   this.dispatchEvent(new CustomEvent('show-book', { bubbles: true, detail: {
-//     book_id: this.book.id
-//   }}))
-// }
-
 export class BookCard extends HTMLElement {
   shadow_root: ShadowRoot
   book_name_span: HTMLSpanElement

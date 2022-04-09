@@ -1,6 +1,7 @@
 import { destroy, list } from '../../api/book_api'
 import { BookCard } from '../../components/book_card/BookCard'
 import { Book } from '../../entities/Book'
+import { showSnackbar } from '../../layouts/default/layout'
 import { navigateTo } from '../../router'
 import { removeById } from '../../utils/arr'
 
@@ -16,21 +17,19 @@ async function showBook(e) {
   })
 }
 
-async function deleteBook(e) {
+async function deleteBook({ detail: { book_id }}: CustomEvent<{ book_id: number }>) {
   try {
-    await destroy(e.detail.book_id)
-    removeById(books, e.detail.book_id)
-    const ref = document.querySelector(`[data-id="${e.detail.book_id}"]`)
-    ref.remove()
+    await destroy(book_id)
+    removeById(books, book_id)
+    document.querySelector(`[data-id="${book_id}"]`).remove()
+    showSnackbar('Book deleted with success', 'success')
   } catch (error) {
     console.error(error)
   }
 }
 
 export async function onPageReady() {
-  const response = await list()
-  books = response.data
-  total_books = response.total
+  ({ data: books, total: total_books} = await list())
 
   const total_books_number_span = document.getElementById('total-books-number')
   total_books_number_span.innerText = String(total_books)

@@ -249,12 +249,20 @@ select {
   opacity: 1;
 }
 
-.btn-danger {
+.background-danger {
   background-color: hsl( var(--clr-danger) );
 }
 
-.btn-primary {
+.background-primary {
   background-color: hsl( var(--clr-primary) );
+}
+
+.background-success {
+  background-color: hsl( var(--clr-success) );
+}
+
+.background-warning {
+  background-color: hsl( var(--clr-warning) );
 }
 
 .btn-icon {
@@ -266,6 +274,7 @@ select {
   cursor: pointer;
   outline: inherit;
   opacity: 100%;
+  aspect-ratio: 1;
 }
 
 .text-field-wrapper {
@@ -286,4 +295,37 @@ select {
 
 .list-item > h3 {
   margin: 0;
+}
+
+.snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
