@@ -56,7 +56,7 @@ export function onNavigationComplete(to, from) {
   }
 }
 
-export function showSnackbar(content: string, type: ActionType) {
+export function showSnackbar(content: string, type: ActionType, undoCb: () => void) {
   const snackbar = document.querySelector('#default-layout-snackbar')
   const snackbar_text_content_span = document.querySelector('#snackbar-text-content')
 
@@ -64,6 +64,11 @@ export function showSnackbar(content: string, type: ActionType) {
 
   snackbar.classList.add(`background-${type}`)
   snackbar.classList.add('show')
+
+  console.log('showing snackbar')
+  document.querySelector('#snackbar-undo-btn').addEventListener('click', undoCb, {
+    once: true
+  })
 
   window.setTimeout(hideSnackbar.bind(null, snackbar), 6000)
 }

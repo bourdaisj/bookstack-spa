@@ -1,4 +1,4 @@
-import { destroy, list } from '../../api/book_api'
+import { destroy, list, restore } from '../../api/book_api'
 import { BookCard } from '../../components/book_card/BookCard'
 import { Book } from '../../entities/Book'
 import { showSnackbar } from '../../layouts/default/layout'
@@ -22,7 +22,9 @@ async function deleteBook({ detail: { book_id }}: CustomEvent<{ book_id: number 
     await destroy(book_id)
     removeById(books, book_id)
     document.querySelector(`[data-id="${book_id}"]`).remove()
-    showSnackbar('Book deleted with success', 'success')
+    showSnackbar('Book deleted with success', 'success', () => {
+      restore(book_id)
+    })
   } catch (error) {
     console.error(error)
   }
