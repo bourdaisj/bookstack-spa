@@ -22,11 +22,19 @@ async function deleteBook({ detail: { book_id }}: CustomEvent<{ book_id: number 
     await destroy(book_id)
     removeById(books, book_id)
     document.querySelector(`[data-id="${book_id}"]`).remove()
-    showSnackbar('Book deleted with success', 'success', () => {
-      restore(book_id)
+
+    showSnackbar({
+      content: 'Book deleted with success',
+      type: 'success',
+      options: {
+        undo: restore.bind(null, book_id)
+      }
     })
   } catch (error) {
-    console.error(error)
+    showSnackbar({
+      content: 'Failed to delete the book',
+      type: 'danger',
+    })
   }
 }
 

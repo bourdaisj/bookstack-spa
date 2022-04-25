@@ -2,7 +2,16 @@ import { navigateTo } from '../../router'
 import { REMOVE_TOKEN_ID, REMOVE_TOKEN_SECRET } from '../../state'
 import { ActionType } from '../../types'
 
-// file is parsed/executed twice so those gets resets to null...
+export interface IShowSnackbarOptions {
+  undo: false | (() => void)
+}
+
+export interface IShowSnackbarParams {
+  content: string
+  type: ActionType
+  options?: IShowSnackbarOptions
+}
+
 let previous_link = null
 let current_link = null
 
@@ -56,7 +65,7 @@ export function onNavigationComplete(to, from) {
   }
 }
 
-export function showSnackbar(content: string, type: ActionType, undoCb: () => void) {
+export function showSnackbar({ content, type, options }: IShowSnackbarParams) {
   const snackbar = document.querySelector('#default-layout-snackbar')
   const snackbar_text_content_span = document.querySelector('#snackbar-text-content')
 
@@ -65,10 +74,15 @@ export function showSnackbar(content: string, type: ActionType, undoCb: () => vo
   snackbar.classList.add(`background-${type}`)
   snackbar.classList.add('show')
 
-  console.log('showing snackbar')
-  document.querySelector('#snackbar-undo-btn').addEventListener('click', undoCb, {
-    once: true
-  })
+  if (options?.undo) {
+    const snackbar_undo_btn = document.querySelector('#snackbar-undo-btn')
+
+    snackbar_undo_btn.addEventListener('click', options.undo, {
+      once: true
+    })
+
+    window.setTimeout(removeEventListener.bind(snackbar_undo_btn, 'click', options.undo), 6000)
+  }
 
   window.setTimeout(hideSnackbar.bind(null, snackbar), 6000)
 }
