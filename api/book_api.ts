@@ -1,12 +1,11 @@
 import { Book } from '../entities/Book'
 import { makeApiCall } from './core'
+import recycle_bin_api from './recycle_bin_api'
 
 const endpoints = {
   list: 'books',
   read: (book_id: number) => `books/${book_id}`,
   delete: (book_id: number) => `books/${book_id}`,
-  restore: (deletion_id) => `recycle-bin/${deletion_id}`,
-  listDeletions: 'recycle-bin'
 }
 
 export async function list(): Promise<{ total : number, data: Array<Book> }> {
@@ -31,14 +30,7 @@ export function destroy(book_id: number) {
 }
 
 export async function restore(book_id: number) {
-  const query_string = `?filter[deletable_type]=book&filter[deletable_id]=${book_id}`
-
-  const response = await makeApiCall(`${endpoints.listDeletions}${query_string}`)
-  const payload = await response.json()
-  
-  const id = payload.data[0].id
-
-  await makeApiCall(endpoints.restore(id), 'PUT')
-
-  console.log(payload)
+  const payload = await recycle_bin_api.list('book', book_id)
+  const deletion_id = payload.data[0].id
+  return recycle_bin_api.restore(deletion_id)
 }
