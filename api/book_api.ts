@@ -5,8 +5,8 @@ const endpoints = {
   list: 'books',
   read: (book_id: number) => `books/${book_id}`,
   delete: (book_id: number) => `books/${book_id}`,
-  restore: (deletion_id) => `recycle_bin/${deletion_id}`,
-  listDeletions: 'recycle_bin'
+  restore: (deletion_id) => `recycle-bin/${deletion_id}`,
+  listDeletions: 'recycle-bin'
 }
 
 export async function list(): Promise<{ total : number, data: Array<Book> }> {
@@ -31,7 +31,7 @@ export function destroy(book_id: number) {
 }
 
 export async function restore(book_id: number) {
-  const query_string =  `?filter[deletable_type]=Bookstack\\Book&filter[deletable_id]=${book_id}`
+  const query_string = `?filter[deletable_type]=book&filter[deletable_id]=${book_id}`
 
   const response = await makeApiCall(`${endpoints.listDeletions}${query_string}`)
   const payload = await response.json()
