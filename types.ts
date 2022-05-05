@@ -30,4 +30,19 @@ export interface BookApiResource {
   owned_by: { id: number, name: string }
 }
 
+export interface UserApiResource {
+  id: number
+  name: string
+  slug: string
+  email: string
+  created_at: string
+  updated_at: string
+  external_auth_id: string
+  user_id: number
+  last_activity_at: string
+  profile_url: string
+  edit_url: string
+  avatar_url: string
+}
+
 export type ActionType = 'success' | 'danger' | 'info' | 'warning'
